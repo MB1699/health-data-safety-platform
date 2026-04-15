@@ -1,0 +1,4 @@
+pandas>=2.2.0
+duckdb>=1.1.0
+streamlit>=1.41.0
+prefect>=3.0.0

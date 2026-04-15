@@ -1,0 +1,101 @@
+{
+  "run_id": "run_20260414T142147Z",
+  "generated_at": "2026-04-14T14:21:48",
+  "overview": {
+    "raw_patient_rows": 180,
+    "enterprise_patients": 123,
+    "duplicate_rows_collapsed": 57,
+    "claims_loaded": 352,
+    "labs_loaded": 146,
+    "encounters_loaded": 273
+  },
+  "checks": [
+    {
+      "run_id": "run_20260414T142147Z",
+      "metric_name": "invalid_dob_rate",
+      "metric_value": 0.0,
+      "threshold": 0.08,
+      "status": "pass"
+    },
+    {
+      "run_id": "run_20260414T142147Z",
+      "metric_name": "duplicate_rows_collapsed",
+      "metric_value": 57,
+      "threshold": 1,
+      "status": "pass"
+    },
+    {
+      "run_id": "run_20260414T142147Z",
+      "metric_name": "orphan_claim_rows",
+      "metric_value": 0,
+      "threshold": 0,
+      "status": "pass"
+    },
+    {
+      "run_id": "run_20260414T142147Z",
+      "metric_name": "orphan_lab_rows",
+      "metric_value": 0,
+      "threshold": 0,
+      "status": "pass"
+    },
+    {
+      "run_id": "run_20260414T142147Z",
+      "metric_name": "orphan_encounter_rows",
+      "metric_value": 0,
+      "threshold": 0,
+      "status": "pass"
+    }
+  ],
+  "top_duplicate_clusters": [
+    {
+      "enterprise_patient_id": "EPI-00073",
+      "source_record_count": 3,
+      "dedupe_reasons": "email_plus_dob, mrn_exact"
+    },
+    {
+      "enterprise_patient_id": "EPI-00116",
+      "source_record_count": 3,
+      "dedupe_reasons": "email_plus_dob"
+    },
+    {
+      "enterprise_patient_id": "EPI-00103",
+      "source_record_count": 3,
+      "dedupe_reasons": "mrn_exact"
+    },
+    {
+      "enterprise_patient_id": "EPI-00036",
+      "source_record_count": 3,
+      "dedupe_reasons": "email_plus_dob, mrn_exact"
+    },
+    {
+      "enterprise_patient_id": "EPI-00097",
+      "source_record_count": 3,
+      "dedupe_reasons": "mrn_exact"
+    },
+    {
+      "enterprise_patient_id": "EPI-00024",
+      "source_record_count": 3,
+      "dedupe_reasons": "email_plus_dob, mrn_exact"
+    },
+    {
+      "enterprise_patient_id": "EPI-00042",
+      "source_record_count": 3,
+      "dedupe_reasons": "mrn_exact"
+    },
+    {
+      "enterprise_patient_id": "EPI-00110",
+      "source_record_count": 3,
+      "dedupe_reasons": "email_plus_dob"
+    },
+    {
+      "enterprise_patient_id": "EPI-00048",
+      "source_record_count": 3,
+      "dedupe_reasons": "mrn_exact"
+    },
+    {
+      "enterprise_patient_id": "EPI-00018",
+      "source_record_count": 3,
+      "dedupe_reasons": "email_plus_dob, mrn_exact"
+    }
+  ]
+}

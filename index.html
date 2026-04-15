@@ -3,124 +3,170 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Little Math Garden</title>
+  <title>Health Data Safety Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="sky"></div>
-  <main class="app-shell">
-    <section class="hero card">
+  <div class="page-glow page-glow-left"></div>
+  <div class="page-glow page-glow-right"></div>
+
+  <main class="shell">
+    <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Playful preschool maths</p>
-        <h1>Little Math Garden</h1>
+        <p class="eyebrow">Zero-cost healthcare infrastructure demo</p>
+        <h1>From fragmented healthcare feeds to safe, trusted analytics.</h1>
         <p class="hero-text">
-          Tap, count, smile, and learn. This tiny learning garden helps young kids explore numbers with colors, animals, and cheerful feedback.
+          Synthetic provider, payer, lab, and referral data flows through an end-to-end platform that ingests,
+          cleans, deduplicates, models, audits, and monitors every step.
         </p>
         <div class="hero-actions">
-          <button class="pill-button coral" data-scroll="#counting-game">Start Counting</button>
-          <button class="pill-button yellow" data-scroll="#kid-calculator">Try Calculator</button>
+          <button class="primary-button" data-scroll="#architecture">See Pipeline</button>
+          <button class="secondary-button" data-scroll="#artifacts">See Interview Artifacts</button>
         </div>
       </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="sun">☀️</div>
-        <div class="cloud cloud-one">☁️</div>
-        <div class="cloud cloud-two">☁️</div>
-        <div class="garden-icons">
-          <span>🐞</span>
-          <span>🌼</span>
-          <span>🐥</span>
-          <span>🌈</span>
+
+      <div class="hero-panel">
+        <div class="metric-card">
+          <span class="metric-label">Raw Patient Rows</span>
+          <strong class="metric-value" data-count="180">0</strong>
+        </div>
+        <div class="metric-card accent">
+          <span class="metric-label">Duplicates Collapsed</span>
+          <strong class="metric-value" data-count="60">0</strong>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Quality Checks</span>
+          <strong class="metric-value" data-count="5">0</strong>
+        </div>
+        <div class="code-chip">Python -> Pandas -> DuckDB -> Streamlit -> Prefect</div>
+      </div>
+    </section>
+
+    <section class="quote-strip">
+      <p>
+        “I built infrastructure that makes messy healthcare data safe, clean, and usable. Here’s the deduplication logic,
+        the compliance audit log, the monitoring dashboard, and the orchestration.”
+      </p>
+    </section>
+
+    <section class="section-block" id="architecture">
+      <div class="section-heading">
+        <p class="eyebrow">Architecture</p>
+        <h2>Five stages, one local stack</h2>
+      </div>
+
+      <div class="pipeline-grid">
+        <article class="stage-card">
+          <span class="stage-index">01</span>
+          <h3>Ingest</h3>
+          <p>Python generates intentionally messy patient, claim, encounter, and lab feeds to simulate real healthcare fragmentation.</p>
+        </article>
+        <article class="stage-card">
+          <span class="stage-index">02</span>
+          <h3>Clean</h3>
+          <p>Pandas standardizes names, DOBs, phones, ZIP codes, gender values, and other risky free-text fields.</p>
+        </article>
+        <article class="stage-card">
+          <span class="stage-index">03</span>
+          <h3>Deduplicate</h3>
+          <p>Explainable matching rules merge identities using MRN, email plus DOB, and name plus DOB with ZIP or phone.</p>
+        </article>
+        <article class="stage-card">
+          <span class="stage-index">04</span>
+          <h3>Model</h3>
+          <p>DuckDB creates a zero-cost warehouse with a patient 360 mart, data quality views, and run monitoring tables.</p>
+        </article>
+        <article class="stage-card">
+          <span class="stage-index">05</span>
+          <h3>Monitor</h3>
+          <p>Streamlit exposes pipeline health, duplicate clusters, audit events, and fact-table volumes for operators.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block" id="artifacts">
+      <div class="section-heading">
+        <p class="eyebrow">Artifacts</p>
+        <h2>What you can point to in the interview</h2>
+      </div>
+
+      <div class="artifact-layout">
+        <div class="artifact-nav">
+          <button class="artifact-button active" data-target="dedupe">Deduplication Logic</button>
+          <button class="artifact-button" data-target="audit">Compliance Audit Log</button>
+          <button class="artifact-button" data-target="monitoring">Monitoring Dashboard</button>
+          <button class="artifact-button" data-target="orchestration">Orchestration</button>
+        </div>
+
+        <div class="artifact-panels">
+          <article class="artifact-panel active" id="dedupe">
+            <h3>Explainable identity resolution</h3>
+            <p>The platform avoids black-box entity resolution. Every merge is traceable to a human-readable match rule.</p>
+            <pre><code>_apply_match_rule(working, union_find, edge_log, ["mrn"], "mrn_exact")
+_apply_match_rule(working, union_find, edge_log, ["email_norm", "dob_clean"], "email_plus_dob")
+_apply_match_rule(working, union_find, edge_log, ["first_name_norm", "last_name_norm", "dob_clean", "zip_norm"], "name_dob_zip")
+_apply_match_rule(working, union_find, edge_log, ["first_name_norm", "last_name_norm", "dob_clean", "phone_last4"], "name_dob_phone4")</code></pre>
+          </article>
+
+          <article class="artifact-panel" id="audit">
+            <h3>Compliance-friendly audit trail</h3>
+            <p>Every run records stage, status, timestamp, and payload so you can prove what happened without exposing raw PHI in the log.</p>
+            <pre><code>{
+  "stage": "dedupe",
+  "status": "completed",
+  "message": "Patient identity graph resolved duplicates into enterprise records.",
+  "payload": {
+    "enterprise_patients": 120,
+    "duplicate_rows_collapsed": 60,
+    "merge_edges": 60
+  }
+}</code></pre>
+          </article>
+
+          <article class="artifact-panel" id="monitoring">
+            <h3>Operational visibility</h3>
+            <p>Streamlit surfaces quality checks, run events, duplicate clusters, and patient 360 views from DuckDB.</p>
+            <pre><code>tab_overview, tab_quality, tab_dedupe, tab_warehouse = st.tabs(
+    ["Overview", "Data Quality", "Deduplication", "Warehouse"]
+)</code></pre>
+          </article>
+
+          <article class="artifact-panel" id="orchestration">
+            <h3>Simple orchestration, zero cloud spend</h3>
+            <p>Prefect-compatible decorators keep the demo local while still showing how the workflow would be scheduled in production.</p>
+            <pre><code>@flow(name="healthcare-data-safety-platform")
+def healthcare_data_safety_flow():
+    raw_counts = generate_task()
+    pipeline_summary = pipeline_task()
+    return {"raw_counts": raw_counts, "pipeline_summary": pipeline_summary}</code></pre>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="progress card">
-      <div>
-        <p class="section-label">Today’s fun</p>
-        <h2>Learning path</h2>
+    <section class="section-block">
+      <div class="section-heading">
+        <p class="eyebrow">Run It</p>
+        <h2>Local commands</h2>
       </div>
-      <div class="progress-badges" id="progress-badges">
-        <span class="badge active">1. Count</span>
-        <span class="badge">2. Pick Number</span>
-        <span class="badge">3. Tiny Sums</span>
-        <span class="badge">4. Calculator</span>
+
+      <div class="command-grid">
+        <div class="command-card">
+          <span class="command-label">Build data + warehouse</span>
+          <code>python -m orchestration.flow</code>
+        </div>
+        <div class="command-card">
+          <span class="command-label">Open dashboard</span>
+          <code>streamlit run streamlit_app.py</code>
+        </div>
+        <div class="command-card">
+          <span class="command-label">Key outputs</span>
+          <code>data/raw | data/processed | sql/marts.sql</code>
+        </div>
       </div>
-    </section>
-
-    <section class="game-grid">
-      <article class="card game-card" id="counting-game">
-        <p class="section-label">Game 1</p>
-        <h2>Count the animals</h2>
-        <p>How many chicks do you see? Tap the right number.</p>
-        <div class="emoji-row" id="counting-emoji" aria-live="polite"></div>
-        <div class="choice-grid" id="counting-choices"></div>
-        <p class="feedback" id="counting-feedback">Let’s count together.</p>
-        <button class="secondary-button" id="new-counting-round">New Counting Round</button>
-      </article>
-
-      <article class="card game-card" id="number-match">
-        <p class="section-label">Game 2</p>
-        <h2>Find the number</h2>
-        <p>Tap the big number that matches the number name.</p>
-        <div class="prompt-bubble">
-          <span class="prompt-label">Find</span>
-          <span class="prompt-number" id="match-word">Three</span>
-        </div>
-        <div class="choice-grid large-choices" id="match-choices"></div>
-        <p class="feedback" id="match-feedback">Numbers can be friends.</p>
-        <button class="secondary-button" id="new-match-round">New Number</button>
-      </article>
-
-      <article class="card game-card wide-card" id="story-sums">
-        <p class="section-label">Game 3</p>
-        <h2>Tiny story sums</h2>
-        <p>Use pictures to solve simple plus and minus questions.</p>
-        <div class="story-board">
-          <div class="story-scene">
-            <div class="story-icons" id="story-icons"></div>
-          </div>
-          <div class="story-math" id="story-problem" aria-live="polite"></div>
-        </div>
-        <div class="choice-grid" id="story-choices"></div>
-        <p class="feedback" id="story-feedback">Stories make maths fun.</p>
-        <button class="secondary-button" id="new-story-round">New Story</button>
-      </article>
-
-      <article class="card game-card wide-card" id="kid-calculator">
-        <p class="section-label">Mini tool</p>
-        <h2>Kid calculator</h2>
-        <p>Press the colorful buttons to make easy sums.</p>
-        <div class="calculator">
-          <div class="calculator-screen" id="calculator-screen" aria-live="polite">0</div>
-          <div class="calculator-grid">
-            <button class="calc-button special" data-action="clear">C</button>
-            <button class="calc-button special" data-action="back">⌫</button>
-            <button class="calc-button operator" data-value="+">+</button>
-            <button class="calc-button operator" data-value="-">−</button>
-
-            <button class="calc-button" data-value="1">1</button>
-            <button class="calc-button" data-value="2">2</button>
-            <button class="calc-button" data-value="3">3</button>
-            <button class="calc-button operator" data-value="×">×</button>
-
-            <button class="calc-button" data-value="4">4</button>
-            <button class="calc-button" data-value="5">5</button>
-            <button class="calc-button" data-value="6">6</button>
-            <button class="calc-button operator" data-value="÷">÷</button>
-
-            <button class="calc-button" data-value="7">7</button>
-            <button class="calc-button" data-value="8">8</button>
-            <button class="calc-button" data-value="9">9</button>
-            <button class="calc-button equals" data-action="equals">=</button>
-
-            <button class="calc-button zero" data-value="0">0</button>
-          </div>
-        </div>
-        <p class="feedback" id="calculator-feedback">Try 2 + 1 or 5 - 2.</p>
-      </article>
     </section>
   </main>
 
