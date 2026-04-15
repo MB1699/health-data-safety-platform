@@ -1,8 +1,8 @@
 # Health Data Safety Platform
 
-An interview-ready healthcare data platform that ingests messy synthetic data, cleans it, deduplicates patient identities, models the result in DuckDB, writes a compliance-friendly audit trail, and exposes monitoring in Streamlit.
+An healthcare data platform that ingests messy synthetic data, cleans it, deduplicates patient identities, models the result in DuckDB, writes a compliance-friendly audit trail, and exposes monitoring in Streamlit.
 
-## Why this project works in interviews
+## Why this project works 
 
 This repo demonstrates the full story:
 
@@ -52,6 +52,3 @@ If you want to force a real Prefect runtime instead of the local no-server fallb
 - Monitoring metrics: `data/processed/monitoring_metrics.json`
 - Raw synthetic feeds: `data/raw/*.csv`
 
-## Interview soundbite
-
-"I built infrastructure that makes messy healthcare data safe, clean, and usable. The project simulates fragmented provider, payer, and lab feeds, applies explainable patient deduplication logic, logs every pipeline step for auditability, and exposes real-time monitoring through a Streamlit dashboard backed by DuckDB."
